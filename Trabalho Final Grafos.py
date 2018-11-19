@@ -21,11 +21,19 @@ def converttoint(listint):
    listint = list(map(int, listint))
    return
 
+"""REALIZA A BUSCA DO MENOR CAMINHO
+   NECESSÁRIO PARA CONECTAR TODOS OS
+   CAMPUS DA UNIVERSIDADE E O RETORNA"""
+
 def dijsktra():
    
 
 """Inicio do main"""
 
+"""INICIO DAS VARIÁVEIS"""
+
+"""NUMERO DE CAMPUS DA UNIVERSIDADE"""
+ncapmi = input()
 """NUMERO DO CAMPI SENDO ANALISADO"""
 campi = 1
 """DISTÂNCIA MÍNIMA"""
@@ -35,8 +43,8 @@ strcampus = "Campus "
 str2 = ": "
 strfinal = ""
 
-"""C"""
-ncapmi = input()
+"""INICIO DAS FUNÇÕES DO PROGRAMA"""
+
 while ncampus >= 0:
    routers = input()
    grid = inputcollector(routers)
