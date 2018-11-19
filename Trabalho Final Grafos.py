@@ -25,7 +25,13 @@ def converttoint(listint):
    NECESSÁRIO PARA CONECTAR TODOS OS
    CAMPUS DA UNIVERSIDADE E O RETORNA"""
 
-def dijsktra():
+def dijsktra(grid, routers, listbad, nbad):
+   """LISTA COM OS VÉRTICES A SEREM UTILIZADOS"""
+   vertices = list()
+   estimativas = list()
+   precedentes = list()
+   
+   
    
 
 """Inicio do main"""
@@ -54,7 +60,7 @@ while ncampus >= 0:
    line = line.replace(" ", "")
    listbad = list(listbad)
    listbad = converttoint(listbad)
-   total = dijsktra(grid, listbad)
+   total = dijsktra(grid, routers, listbad, nbad)
    strfinal = strcampus + campi + str2 + total
    print(strfinal)
    ncampi = ncampi - 1
