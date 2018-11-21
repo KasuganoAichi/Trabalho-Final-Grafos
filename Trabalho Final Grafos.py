@@ -6,37 +6,45 @@ def inputcollector(routers, control):
    grid = list()
    auxlist = list()
    lineaux = ''
+   line = ''
    pos = 0
+   aux = routers - 1
+   aux2 = aux
    """COLETA VALORES E MONTA MATRIZ"""
-   while routers >= 0:
+   while routers > 0:
       line = input()
       lineaux = line
-      while line != '':
-         pos = line.find(' ')
-         auxlist.append(int(line[:pos]))
-         lineaux = lineaux[:pos+1]
-         line = stringaux
+      while aux >= 0:
+         if aux == 0:
+            auxlist.append(int(lineaux))
+            break
+         else:
+            pos = line.find(' ')
+            line = line[:pos]
+            auxlist.append(int(line))
+            lineaux = lineaux[pos+1:]
+            line = lineaux
+            aux = aux - 1
+      aux = aux2
       grid.append(auxlist)
       routers = routers - 1
    if control == 1:
       return grid
    else:
+      print('retornou listbad')
       return auxlist
 
-"""CONVERTE UMA LISTA DE STRINGS EM UMA
-   LISTA DE INTEIROS"""
-
-"""REALIZA A BUSCA DO MENOR CAMINHO
-   NECESSÁRIO PARA CONECTAR TODOS OS
-   CAMPUS DA UNIVERSIDADE E O RETORNA"""
+"""REALIZA A BUSCA DA ARVORE GERADORA
+   MINIMA NECESSÁRIA PARA CONECTAR TODOS OS
+   CAMPUS DA UNIVERSIDADE E A RETORNA"""
 
 def prim(grid, routers, listbad):
    """INDÍCES DA MATRIZ
       VALORES INICIAM EM 1 POIS
       QUANDO CHAMADOS PELA PRIMEIRA VEZ
       NECESSITAM ESTAR EM 1"""
-   i = 0"""LINHA"""
-   j = 0 """COLUNA"""
+   i = 0
+   j = 0
    
    """MATRIZ SER UTILIZADA"""
    grid2 = list()
@@ -59,7 +67,7 @@ def prim(grid, routers, listbad):
                j = j + 1
             j = 0
             for item in grid2:
-               if j not in listbad or i not in listbad:
+               if j + 1 not in listbad or i + 1 not in listbad:
                   if grid2[j] < menor:
                      if j not in auxlist and grid2[j] != 0:
                         menor = grid2[j]
@@ -78,10 +86,8 @@ def prim(grid, routers, listbad):
 
 """Inicio do main"""
 
-"""INICIO DAS VARIÁVEIS"""
-
 """NUMERO DE CAMPUS DA UNIVERSIDADE"""
-ncapmi = int(input())
+ncampi = int(input())
 """NUMERO DO CAMPI SENDO ANALISADO"""
 campi = 1
 """DISTÂNCIA MÍNIMA"""
@@ -95,7 +101,7 @@ strfinal = ""
 
 """INICIO DAS FUNÇÕES DO PROGRAMA"""
 
-while ncampus >= 0:
+while ncampi >= 0:
    routers = int(input())
    grid = inputcollector(routers, 1)
    nbad = int(input())
