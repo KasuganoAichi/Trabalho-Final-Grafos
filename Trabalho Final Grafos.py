@@ -9,17 +9,24 @@ def inputcollector(routers):
       line = input()
       line = line.replace(" ", "")
       line = list(line)
-      grid = grid.append(line)
+      grid.append(line)
       routers = routers - 1
    return grid
 
 """CONVERTE UMA LISTA DE STRINGS EM UMA
    LISTA DE INTEIROS"""
 
-def converttoint(listint):
-   listint = map(int, listint)
-   listint = list(map(int, listint))
-   return
+def converttoint(listint, x):
+   i = 0
+   j = 0
+   straux
+   while i <= x:
+      while j <= x:
+         listint[i][j] = listint[i][j]
+         j = j + 1
+      i = i + 1
+      j = 0
+   return listint
 
 """REALIZA A BUSCA DO MENOR CAMINHO
    NECESSÁRIO PARA CONECTAR TODOS OS
@@ -109,16 +116,15 @@ strfinal = ""
 while ncampus >= 0:
    routers = input()
    grid = inputcollector(routers)
-   grid = converttoint(grid)
+   grid = converttoint(grid, routers)
    nbad = input()
    listbad = input()
    line = line.replace(" ", "")
    listbad = list(listbad)
-   listbad = converttoint(listbad)
-   total = dijsktra(grid, routers, listbad, nbad)
-   strcampi = str(campi)
-   strtotal = str(total)
-   strfinal = strcampus + strcampi + str2 + strtotal
+   listbad = map(int, listbad)
+   listbad = list(map(int, listbad))
+   total = prim(grid, routers, listbad, nbad)
+   strfinal = strcampus + str(campi) + str2 + str(total)
    print(strfinal)
    ncampi = ncampi - 1
    campi = campi + 1
