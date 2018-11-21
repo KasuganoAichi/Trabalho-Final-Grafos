@@ -66,16 +66,24 @@ def prim(grid, routers, listbad):
    usedlistbad = list()
    total = 0
    menor = 0
+   maximo = 0
    pos = 0
    aux = 0
    
+   while i < routers:
+      while j < routers:
+         if maximo < grid[i][j]:
+            maximo = grid[i][j]
+         j = j + 1
+      i = i + 1
+      j = 0
+   
    while len(auxlist) < routers:
-      menor = 999999
-      print(menor)
+      menor = maximo
       for item in auxlist:
          i = auxlist[aux]
          if i not in usedlistbad:   
-            while j <= routers:
+            while j < routers:
                grid2.append(grid[i][j])
                j = j + 1
             j = 0
@@ -90,6 +98,7 @@ def prim(grid, routers, listbad):
                   j = j + 1
             j = 0
             aux = aux + 1
+      grid2 = list()
       total = total + menor
       print('Menor = ', menor)
       aux = 0
