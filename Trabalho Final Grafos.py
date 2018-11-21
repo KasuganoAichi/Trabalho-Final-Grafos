@@ -1,32 +1,30 @@
 """INPUTCOLLECTOR: COLETA O INPUT DO TECLADO E
    O SALVA EM UMA MATRIZ (LISTA DE LISTAS) PARA ANÁLISE"""
 
-def inputcollector(routers):
+def inputcollector(routers, control):
    """LISTA DE NÚMEROS"""
    grid = list()
+   auxlist = list()
+   lineaux = ''
+   pos = 0
    """COLETA VALORES E MONTA MATRIZ"""
    while routers >= 0:
       line = input()
-      line = line.replace(" ", "")
-      line = list(line)
-      grid.append(line)
+      lineaux = line
+      while line != '':
+         pos = line.find(' ')
+         auxlist.append(int(line[:pos]))
+         lineaux = lineaux[:pos+1]
+         line = stringaux
+      grid.append(auxlist)
       routers = routers - 1
-   return grid
+   if control == 1:
+      return grid
+   else:
+      return auxlist
 
 """CONVERTE UMA LISTA DE STRINGS EM UMA
    LISTA DE INTEIROS"""
-
-def converttoint(listint, x):
-   i = 0
-   j = 0
-   straux
-   while i <= x:
-      while j <= x:
-         listint[i][j] = listint[i][j]
-         j = j + 1
-      i = i + 1
-      j = 0
-   return listint
 
 """REALIZA A BUSCA DO MENOR CAMINHO
    NECESSÁRIO PARA CONECTAR TODOS OS
@@ -83,7 +81,7 @@ def prim(grid, routers, listbad):
 """INICIO DAS VARIÁVEIS"""
 
 """NUMERO DE CAMPUS DA UNIVERSIDADE"""
-ncapmi = input()
+ncapmi = int(input())
 """NUMERO DO CAMPI SENDO ANALISADO"""
 campi = 1
 """DISTÂNCIA MÍNIMA"""
@@ -98,15 +96,10 @@ strfinal = ""
 """INICIO DAS FUNÇÕES DO PROGRAMA"""
 
 while ncampus >= 0:
-   routers = input()
-   grid = inputcollector(routers)
-   grid = converttoint(grid, routers)
-   nbad = input()
-   listbad = input()
-   line = line.replace(" ", "")
-   listbad = list(listbad)
-   listbad = map(int, listbad)
-   listbad = list(map(int, listbad))
+   routers = int(input())
+   grid = inputcollector(routers, 1)
+   nbad = int(input())
+   listbad = inputcollector(nbad, 0)
    total = prim(grid, routers, listbad, nbad)
    strfinal = strcampus + str(campi) + str2 + str(total)
    print(strfinal)
